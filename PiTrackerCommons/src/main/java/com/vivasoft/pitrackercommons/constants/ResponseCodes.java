@@ -8,5 +8,6 @@ public final class ResponseCodes {
   public static final int RETURNING_YOUR_CONFIG = 1001;
   public static final int CREATED_YOUR_CONFIG = 1002;
 
+  public static final int UNKNOWN_REQUEST = 1998;
   public static final int MALFORMED_REQUEST = 1999;
 }

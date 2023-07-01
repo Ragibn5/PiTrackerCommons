@@ -1,4 +1,4 @@
-package com.vivasoft.pitrackercommons.parsers;
+package com.vivasoft.pitrackercommons.utils;
 
 import android.os.Bundle;
 import android.os.Message;
