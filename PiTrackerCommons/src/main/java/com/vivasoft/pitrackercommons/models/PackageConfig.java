@@ -9,8 +9,6 @@ public class PackageConfig implements Serializable {
   @Nullable
   private String dataPostUrl;
   @Nullable
-  private String authToken;
-  @Nullable
   private String requestMethod;
 
   @Nullable
@@ -30,7 +28,6 @@ public class PackageConfig implements Serializable {
 
   public PackageConfig(
     @Nullable String dataPostUrl,
-    @Nullable String authToken,
     @Nullable String requestMethod,
     @Nullable List<DailyOperationHours> dailyOperationHoursList,
     @Nullable List<Param> pathParamList,
@@ -39,7 +36,6 @@ public class PackageConfig implements Serializable {
     @Nullable List<Param> requestBodyParamList
   ) {
     this.dataPostUrl = dataPostUrl;
-    this.authToken = authToken;
     this.requestMethod = requestMethod;
     this.dailyOperationHoursList = dailyOperationHoursList;
     this.pathParamList = pathParamList;
@@ -55,15 +51,6 @@ public class PackageConfig implements Serializable {
 
   public void setDataPostUrl(@Nullable String dataPostUrl) {
     this.dataPostUrl = dataPostUrl;
-  }
-
-  @Nullable
-  public String getAuthToken() {
-    return authToken;
-  }
-
-  public void setAuthToken(@Nullable String authToken) {
-    this.authToken = authToken;
   }
 
   @Nullable
