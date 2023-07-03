@@ -2,7 +2,7 @@ package com.vivasoft.pitrackercommons.parsers;
 
 import androidx.core.util.Pair;
 
-public final class ExtraArgsParser extends PrimitiveTypesParser {
+public final class ParamParser extends PrimitiveTypesParser {
   public Pair<String, Object> parse(String data) throws IllegalArgumentException {
     if (data.matches("^([a-zA-Z]+):([a-zA-Z]+):(.+)$")) {
       throw new IllegalArgumentException(
