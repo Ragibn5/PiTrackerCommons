@@ -15,8 +15,6 @@ public class PackageConfig implements Serializable {
   private List<DailyOperationHours> dailyOperationHoursList;
 
   @Nullable
-  private List<Param> pathParamList;
-  @Nullable
   private List<Param> queryParamList;
   @Nullable
   private List<Param> headerParamList;
@@ -30,7 +28,6 @@ public class PackageConfig implements Serializable {
     @Nullable String dataPostUrl,
     @Nullable String requestMethod,
     @Nullable List<DailyOperationHours> dailyOperationHoursList,
-    @Nullable List<Param> pathParamList,
     @Nullable List<Param> queryParamList,
     @Nullable List<Param> headerParamList,
     @Nullable List<Param> requestBodyParamList
@@ -38,7 +35,6 @@ public class PackageConfig implements Serializable {
     this.dataPostUrl = dataPostUrl;
     this.requestMethod = requestMethod;
     this.dailyOperationHoursList = dailyOperationHoursList;
-    this.pathParamList = pathParamList;
     this.queryParamList = queryParamList;
     this.headerParamList = headerParamList;
     this.requestBodyParamList = requestBodyParamList;
@@ -69,15 +65,6 @@ public class PackageConfig implements Serializable {
 
   public void setDailyOperationHoursList(@Nullable List<DailyOperationHours> dailyOperationHoursList) {
     this.dailyOperationHoursList = dailyOperationHoursList;
-  }
-
-  @Nullable
-  public List<Param> getPathParamList() {
-    return pathParamList;
-  }
-
-  public void setPathParamList(@Nullable List<Param> pathParamList) {
-    this.pathParamList = pathParamList;
   }
 
   @Nullable

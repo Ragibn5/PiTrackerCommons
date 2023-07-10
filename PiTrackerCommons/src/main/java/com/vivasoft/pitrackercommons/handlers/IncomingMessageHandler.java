@@ -23,7 +23,7 @@ public class IncomingMessageHandler extends Handler {
     messageCallback.onMessage(msg);
   }
 
-  public static interface MessageCallback {
-    public void onMessage(Message message);
+  public interface MessageCallback {
+    void onMessage(Message message);
   }
 }
