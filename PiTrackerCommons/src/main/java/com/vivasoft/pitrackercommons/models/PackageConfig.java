@@ -12,6 +12,13 @@ public class PackageConfig implements Serializable {
   private String requestMethod;
 
   @Nullable
+  private String authToken;
+  @Nullable
+  private String refreshToken;
+
+  @Nullable
+  private Long locationFetchPulseTime;
+  @Nullable
   private List<DailyOperationHours> dailyOperationHoursList;
 
   @Nullable
@@ -27,13 +34,18 @@ public class PackageConfig implements Serializable {
   public PackageConfig(
     @Nullable String dataPostUrl,
     @Nullable String requestMethod,
+    @Nullable String authToken,
+    @Nullable String refreshToken,
+    @Nullable Long locationFetchPulseTime,
     @Nullable List<DailyOperationHours> dailyOperationHoursList,
     @Nullable List<Param> queryParamList,
     @Nullable List<Param> headerParamList,
-    @Nullable List<Param> requestBodyParamList
-  ) {
+    @Nullable List<Param> requestBodyParamList) {
     this.dataPostUrl = dataPostUrl;
     this.requestMethod = requestMethod;
+    this.authToken = authToken;
+    this.refreshToken = refreshToken;
+    this.locationFetchPulseTime = locationFetchPulseTime;
     this.dailyOperationHoursList = dailyOperationHoursList;
     this.queryParamList = queryParamList;
     this.headerParamList = headerParamList;
@@ -56,6 +68,33 @@ public class PackageConfig implements Serializable {
 
   public void setRequestMethod(@Nullable String requestMethod) {
     this.requestMethod = requestMethod;
+  }
+
+  @Nullable
+  public String getAuthToken() {
+    return authToken;
+  }
+
+  public void setAuthToken(@Nullable String authToken) {
+    this.authToken = authToken;
+  }
+
+  @Nullable
+  public String getRefreshToken() {
+    return refreshToken;
+  }
+
+  public void setRefreshToken(@Nullable String refreshToken) {
+    this.refreshToken = refreshToken;
+  }
+
+  @Nullable
+  public Long getLocationFetchPulseTime() {
+    return locationFetchPulseTime;
+  }
+
+  public void setLocationFetchPulseTime(@Nullable Long locationFetchPulseTime) {
+    this.locationFetchPulseTime = locationFetchPulseTime;
   }
 
   @Nullable
