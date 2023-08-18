@@ -4,13 +4,13 @@ import androidx.annotation.NonNull;
 
 import java.io.Serializable;
 
-public class PackageConfigs implements Serializable {
+public class PackageConfig implements Serializable {
   @NonNull
   LogPostConfig logPostConfig;
   @NonNull
   LocationPostConfig locationPostConfig;
 
-  public PackageConfigs(@NonNull LogPostConfig logPostConfig, @NonNull LocationPostConfig locationPostConfig) {
+  public PackageConfig(@NonNull LogPostConfig logPostConfig, @NonNull LocationPostConfig locationPostConfig) {
     this.logPostConfig = logPostConfig;
     this.locationPostConfig = locationPostConfig;
   }
