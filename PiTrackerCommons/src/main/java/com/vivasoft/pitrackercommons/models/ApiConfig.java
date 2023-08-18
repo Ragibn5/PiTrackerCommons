@@ -20,10 +20,6 @@ public class ApiConfig implements Serializable {
   @Nullable
   private List<Param> requestBodyParamList;
 
-  public ApiConfig(@NonNull String postUrl) {
-    this.postUrl = postUrl;
-  }
-
   public ApiConfig(@NonNull String postUrl,
                    @Nullable String authToken,
                    @Nullable List<Param> queryParamList,
