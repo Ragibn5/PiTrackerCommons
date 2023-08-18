@@ -11,10 +11,6 @@ public class LocationPostConfig extends ApiConfig implements Serializable {
   @Nullable
   private List<DailyOperationHours> dailyOperationHoursList;
 
-  public LocationPostConfig() {
-    super();
-  }
-
   public LocationPostConfig(@Nullable String postUrl,
                             @Nullable String authToken,
                             @Nullable List<Param> queryParamList,

@@ -8,10 +8,6 @@ public class LogPostConfig extends ApiConfig implements Serializable {
   @Nullable
   private String packageName;
 
-  public LogPostConfig() {
-    super();
-  }
-
   public LogPostConfig(@Nullable String packageName) {
     super();
     this.packageName = packageName;
