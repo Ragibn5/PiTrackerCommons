@@ -1,24 +1,24 @@
 package com.vivasoft.pitrackercommons.models;
 
-import androidx.annotation.Nullable;
+import androidx.annotation.NonNull;
 
 import java.io.Serializable;
 
 public class LogPostConfig extends ApiConfig implements Serializable {
-  @Nullable
+  @NonNull
   private String packageName;
 
-  public LogPostConfig(@Nullable String packageName) {
-    super();
+  public LogPostConfig(@NonNull String postUrl, @NonNull String packageName) {
+    super(postUrl);
     this.packageName = packageName;
   }
 
-  @Nullable
+  @NonNull
   public String getPackageName() {
     return packageName;
   }
 
-  public void setPackageName(@Nullable String packageName) {
+  public void setPackageName(@NonNull String packageName) {
     this.packageName = packageName;
   }
 }

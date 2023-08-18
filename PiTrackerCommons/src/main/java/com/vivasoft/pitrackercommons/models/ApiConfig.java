@@ -1,12 +1,13 @@
 package com.vivasoft.pitrackercommons.models;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.io.Serializable;
 import java.util.List;
 
 public class ApiConfig implements Serializable {
-  @Nullable
+  @NonNull
   private String postUrl;
 
   @Nullable
@@ -19,10 +20,11 @@ public class ApiConfig implements Serializable {
   @Nullable
   private List<Param> requestBodyParamList;
 
-  public ApiConfig() {
+  public ApiConfig(@NonNull String postUrl) {
+    this.postUrl = postUrl;
   }
 
-  public ApiConfig(@Nullable String postUrl,
+  public ApiConfig(@NonNull String postUrl,
                    @Nullable String authToken,
                    @Nullable List<Param> queryParamList,
                    @Nullable List<Param> headerParamList,
@@ -34,12 +36,12 @@ public class ApiConfig implements Serializable {
     this.requestBodyParamList = requestBodyParamList;
   }
 
-  @Nullable
+  @NonNull
   public String getPostUrl() {
     return postUrl;
   }
 
-  public void setPostUrl(@Nullable String postUrl) {
+  public void setPostUrl(@NonNull String postUrl) {
     this.postUrl = postUrl;
   }
 
