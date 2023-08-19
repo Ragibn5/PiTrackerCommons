@@ -1,9 +1,6 @@
 package com.vivasoft.pitrackercommons.models;
 
 import androidx.annotation.NonNull;
-import androidx.core.util.Pair;
-
-import com.vivasoft.pitrackercommons.parsers.ParamParser;
 
 import java.io.Serializable;
 
@@ -13,12 +10,9 @@ public class Param implements Serializable {
   @NonNull
   private final Object value;
 
-  private final ParamParser parser = new ParamParser();
-
-  public Param(String data) throws IllegalArgumentException {
-    Pair<String, Object> parsedData = parser.parse(data);
-    this.key = parsedData.first;
-    this.value = parsedData.second;
+  public Param(@NonNull String key, @NonNull Object value) {
+    this.key = key;
+    this.value = value;
   }
 
   @NonNull
