@@ -11,9 +11,6 @@ public class ApiConfig implements Serializable {
   private String postUrl;
 
   @Nullable
-  private String authToken;
-
-  @Nullable
   private List<Param> queryParamList;
   @Nullable
   private List<Param> headerParamList;
@@ -21,12 +18,10 @@ public class ApiConfig implements Serializable {
   private List<Param> requestBodyParamList;
 
   public ApiConfig(@NonNull String postUrl,
-                   @Nullable String authToken,
                    @Nullable List<Param> queryParamList,
                    @Nullable List<Param> headerParamList,
                    @Nullable List<Param> requestBodyParamList) {
     this.postUrl = postUrl;
-    this.authToken = authToken;
     this.queryParamList = queryParamList;
     this.headerParamList = headerParamList;
     this.requestBodyParamList = requestBodyParamList;
@@ -39,15 +34,6 @@ public class ApiConfig implements Serializable {
 
   public void setPostUrl(@NonNull String postUrl) {
     this.postUrl = postUrl;
-  }
-
-  @Nullable
-  public String getAuthToken() {
-    return authToken;
-  }
-
-  public void setAuthToken(@Nullable String authToken) {
-    this.authToken = authToken;
   }
 
   @Nullable
