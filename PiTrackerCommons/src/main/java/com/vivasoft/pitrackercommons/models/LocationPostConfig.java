@@ -10,17 +10,32 @@ public class LocationPostConfig extends ApiConfig implements Serializable {
   @NonNull
   private String packageName;
   @NonNull
+  private String latitudeKeyName;
+  @NonNull
+  private String longitudeKeyName;
+  @NonNull
+  private String timeStampKeyName;
+  @Nullable
+  private List<Param> locationEntryParams;
+  @NonNull
   private List<DailyOperationHours> dailyOperationHoursList;
 
   public LocationPostConfig(@NonNull String postUrl,
-                            @Nullable String authToken,
                             @Nullable List<Param> queryParamList,
                             @Nullable List<Param> headerParamList,
                             @Nullable List<Param> requestBodyParamList,
                             @NonNull String packageName,
+                            @NonNull String latitudeKeyName,
+                            @NonNull String longitudeKeyName,
+                            @NonNull String timeStampKeyName,
+                            @Nullable List<Param> locationEntryParams,
                             @NonNull List<DailyOperationHours> dailyOperationHoursList) {
-    super(postUrl, authToken, queryParamList, headerParamList, requestBodyParamList);
+    super(postUrl, queryParamList, headerParamList, requestBodyParamList);
     this.packageName = packageName;
+    this.latitudeKeyName = latitudeKeyName;
+    this.longitudeKeyName = longitudeKeyName;
+    this.timeStampKeyName = timeStampKeyName;
+    this.locationEntryParams = locationEntryParams;
     this.dailyOperationHoursList = dailyOperationHoursList;
   }
 
@@ -31,6 +46,42 @@ public class LocationPostConfig extends ApiConfig implements Serializable {
 
   public void setPackageName(@NonNull String packageName) {
     this.packageName = packageName;
+  }
+
+  @NonNull
+  public String getLatitudeKeyName() {
+    return latitudeKeyName;
+  }
+
+  public void setLatitudeKeyName(@NonNull String latitudeKeyName) {
+    this.latitudeKeyName = latitudeKeyName;
+  }
+
+  @NonNull
+  public String getLongitudeKeyName() {
+    return longitudeKeyName;
+  }
+
+  public void setLongitudeKeyName(@NonNull String longitudeKeyName) {
+    this.longitudeKeyName = longitudeKeyName;
+  }
+
+  @NonNull
+  public String getTimeStampKeyName() {
+    return timeStampKeyName;
+  }
+
+  public void setTimeStampKeyName(@NonNull String timeStampKeyName) {
+    this.timeStampKeyName = timeStampKeyName;
+  }
+
+  @Nullable
+  public List<Param> getLocationEntryParams() {
+    return locationEntryParams;
+  }
+
+  public void setLocationEntryParams(@NonNull List<Param> locationEntryParams) {
+    this.locationEntryParams = locationEntryParams;
   }
 
   @NonNull
