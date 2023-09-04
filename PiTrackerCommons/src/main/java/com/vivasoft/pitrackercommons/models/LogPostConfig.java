@@ -8,15 +8,15 @@ import java.util.List;
 
 public class LogPostConfig extends ApiConfig implements Serializable {
   @NonNull
-  private String packageName;
+  private final String packageName;
   @NonNull
-  private String descriptionKeyName;
+  private final String descriptionKeyName;
   @NonNull
   private final String timeStampKeyName;
   @NonNull
-  private String logEntriesKeyName;
+  private final String logEntriesKeyName;
   @Nullable
-  private List<Param> logEntryParams;
+  private final List<Param> logEntryParams;
 
   public LogPostConfig(@NonNull String postUrl,
                        @Nullable List<Param> queryParamList,
@@ -40,17 +40,14 @@ public class LogPostConfig extends ApiConfig implements Serializable {
     return packageName;
   }
 
-  public void setPackageName(@NonNull String packageName) {
-    this.packageName = packageName;
-  }
-
   @NonNull
   public String getDescriptionKeyName() {
     return descriptionKeyName;
   }
 
-  public void setDescriptionKeyName(@NonNull String descriptionKeyName) {
-    this.descriptionKeyName = descriptionKeyName;
+  @NonNull
+  public String getTimeStampKeyName() {
+    return timeStampKeyName;
   }
 
   @NonNull
@@ -58,16 +55,8 @@ public class LogPostConfig extends ApiConfig implements Serializable {
     return logEntriesKeyName;
   }
 
-  public void setLogEntriesKeyName(@NonNull String logEntriesKeyName) {
-    this.logEntriesKeyName = logEntriesKeyName;
-  }
-
   @Nullable
   public List<Param> getLogEntryParams() {
     return logEntryParams;
-  }
-
-  public void setLogEntryParams(@Nullable List<Param> logEntryParams) {
-    this.logEntryParams = logEntryParams;
   }
 }
