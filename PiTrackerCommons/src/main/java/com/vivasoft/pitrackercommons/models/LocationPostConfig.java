@@ -8,7 +8,7 @@ import java.util.List;
 
 public class LocationPostConfig extends ApiConfig implements Serializable {
   @NonNull
-  private final String packageName;
+  private String packageName;
   @NonNull
   private final String latitudeKeyName;
   @NonNull
@@ -46,6 +46,10 @@ public class LocationPostConfig extends ApiConfig implements Serializable {
   @NonNull
   public String getPackageName() {
     return packageName;
+  }
+
+  public void setPackageName(@NonNull String packageName) {
+    this.packageName = packageName;
   }
 
   @NonNull

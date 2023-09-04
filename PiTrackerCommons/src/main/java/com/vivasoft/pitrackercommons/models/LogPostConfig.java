@@ -8,7 +8,7 @@ import java.util.List;
 
 public class LogPostConfig extends ApiConfig implements Serializable {
   @NonNull
-  private final String packageName;
+  private String packageName;
   @NonNull
   private final String typeKeyName;
   @NonNull
@@ -42,6 +42,10 @@ public class LogPostConfig extends ApiConfig implements Serializable {
   @NonNull
   public String getPackageName() {
     return packageName;
+  }
+
+  public void setPackageName(@NonNull String packageName) {
+    this.packageName = packageName;
   }
 
   @NonNull
