@@ -6,9 +6,9 @@ import java.io.Serializable;
 
 public class PackageConfig implements Serializable {
   @NonNull
-  LogPostConfig logPostConfig;
+  private final LogPostConfig logPostConfig;
   @NonNull
-  LocationPostConfig locationPostConfig;
+  private final LocationPostConfig locationPostConfig;
 
   public PackageConfig(@NonNull LogPostConfig logPostConfig, @NonNull LocationPostConfig locationPostConfig) {
     this.logPostConfig = logPostConfig;
@@ -20,16 +20,8 @@ public class PackageConfig implements Serializable {
     return logPostConfig;
   }
 
-  public void setLogPostConfig(@NonNull LogPostConfig logPostConfig) {
-    this.logPostConfig = logPostConfig;
-  }
-
   @NonNull
   public LocationPostConfig getLocationPostConfig() {
     return locationPostConfig;
-  }
-
-  public void setLocationPostConfig(@NonNull LocationPostConfig locationPostConfig) {
-    this.locationPostConfig = locationPostConfig;
   }
 }

@@ -8,14 +8,14 @@ import java.util.List;
 
 public class ApiConfig implements Serializable {
   @NonNull
-  private String postUrl;
+  private final String postUrl;
 
   @Nullable
-  private List<Param> queryParamList;
+  private final List<Param> queryParamList;
   @Nullable
-  private List<Param> headerParamList;
+  private final List<Param> headerParamList;
   @Nullable
-  private List<Param> requestBodyParamList;
+  private final List<Param> requestBodyParamList;
 
   public ApiConfig(@NonNull String postUrl,
                    @Nullable List<Param> queryParamList,
@@ -32,17 +32,9 @@ public class ApiConfig implements Serializable {
     return postUrl;
   }
 
-  public void setPostUrl(@NonNull String postUrl) {
-    this.postUrl = postUrl;
-  }
-
   @Nullable
   public List<Param> getQueryParamList() {
     return queryParamList;
-  }
-
-  public void setQueryParamList(@Nullable List<Param> queryParamList) {
-    this.queryParamList = queryParamList;
   }
 
   @Nullable
@@ -50,16 +42,8 @@ public class ApiConfig implements Serializable {
     return headerParamList;
   }
 
-  public void setHeaderParamList(@Nullable List<Param> headerParamList) {
-    this.headerParamList = headerParamList;
-  }
-
   @Nullable
   public List<Param> getRequestBodyParamList() {
     return requestBodyParamList;
-  }
-
-  public void setRequestBodyParamList(@Nullable List<Param> requestBodyParamList) {
-    this.requestBodyParamList = requestBodyParamList;
   }
 }

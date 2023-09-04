@@ -8,19 +8,19 @@ import java.util.List;
 
 public class LocationPostConfig extends ApiConfig implements Serializable {
   @NonNull
-  private String packageName;
+  private final String packageName;
   @NonNull
-  private String latitudeKeyName;
+  private final String latitudeKeyName;
   @NonNull
-  private String longitudeKeyName;
+  private final String longitudeKeyName;
   @NonNull
-  private String timeStampKeyName;
+  private final String timeStampKeyName;
   @NonNull
-  private String locationEntriesKeyName;
+  private final String locationEntriesKeyName;
   @Nullable
-  private List<Param> locationEntryParams;
+  private final List<Param> locationEntryParams;
   @NonNull
-  private List<DailyOperationHours> dailyOperationHoursList;
+  private final List<DailyOperationHours> dailyOperationHoursList;
 
   public LocationPostConfig(@NonNull String postUrl,
                             @Nullable List<Param> queryParamList,
@@ -48,17 +48,9 @@ public class LocationPostConfig extends ApiConfig implements Serializable {
     return packageName;
   }
 
-  public void setPackageName(@NonNull String packageName) {
-    this.packageName = packageName;
-  }
-
   @NonNull
   public String getLatitudeKeyName() {
     return latitudeKeyName;
-  }
-
-  public void setLatitudeKeyName(@NonNull String latitudeKeyName) {
-    this.latitudeKeyName = latitudeKeyName;
   }
 
   @NonNull
@@ -66,17 +58,9 @@ public class LocationPostConfig extends ApiConfig implements Serializable {
     return longitudeKeyName;
   }
 
-  public void setLongitudeKeyName(@NonNull String longitudeKeyName) {
-    this.longitudeKeyName = longitudeKeyName;
-  }
-
   @NonNull
   public String getTimeStampKeyName() {
     return timeStampKeyName;
-  }
-
-  public void setTimeStampKeyName(@NonNull String timeStampKeyName) {
-    this.timeStampKeyName = timeStampKeyName;
   }
 
   @NonNull
@@ -84,25 +68,13 @@ public class LocationPostConfig extends ApiConfig implements Serializable {
     return locationEntriesKeyName;
   }
 
-  public void setLocationEntriesKeyName(@NonNull String locationEntriesKeyName) {
-    this.locationEntriesKeyName = locationEntriesKeyName;
-  }
-
   @Nullable
   public List<Param> getLocationEntryParams() {
     return locationEntryParams;
   }
 
-  public void setLocationEntryParams(@Nullable List<Param> locationEntryParams) {
-    this.locationEntryParams = locationEntryParams;
-  }
-
   @NonNull
   public List<DailyOperationHours> getDailyOperationHoursList() {
     return dailyOperationHoursList;
-  }
-
-  public void setDailyOperationHoursList(@NonNull List<DailyOperationHours> dailyOperationHoursList) {
-    this.dailyOperationHoursList = dailyOperationHoursList;
   }
 }
