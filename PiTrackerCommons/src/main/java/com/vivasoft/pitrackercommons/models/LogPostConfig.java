@@ -11,6 +11,8 @@ public class LogPostConfig extends ApiConfig implements Serializable {
   private String packageName;
   @NonNull
   private String descriptionKeyName;
+  @NonNull
+  private String logEntriesKeyName;
   @Nullable
   private List<Param> logEntryParams;
 
@@ -20,10 +22,12 @@ public class LogPostConfig extends ApiConfig implements Serializable {
                        @Nullable List<Param> requestBodyParamList,
                        @NonNull String packageName,
                        @NonNull String descriptionKeyName,
+                       @NonNull String logEntriesKeyName,
                        @Nullable List<Param> logEntryParams) {
     super(postUrl, queryParamList, headerParamList, requestBodyParamList);
     this.packageName = packageName;
     this.descriptionKeyName = descriptionKeyName;
+    this.logEntriesKeyName = logEntriesKeyName;
     this.logEntryParams = logEntryParams;
   }
 
@@ -43,6 +47,15 @@ public class LogPostConfig extends ApiConfig implements Serializable {
 
   public void setDescriptionKeyName(@NonNull String descriptionKeyName) {
     this.descriptionKeyName = descriptionKeyName;
+  }
+
+  @NonNull
+  public String getLogEntriesKeyName() {
+    return logEntriesKeyName;
+  }
+
+  public void setLogEntriesKeyName(@NonNull String logEntriesKeyName) {
+    this.logEntriesKeyName = logEntriesKeyName;
   }
 
   @Nullable

@@ -15,6 +15,8 @@ public class LocationPostConfig extends ApiConfig implements Serializable {
   private String longitudeKeyName;
   @NonNull
   private String timeStampKeyName;
+  @NonNull
+  private String locationEntriesKeyName;
   @Nullable
   private List<Param> locationEntryParams;
   @NonNull
@@ -28,6 +30,7 @@ public class LocationPostConfig extends ApiConfig implements Serializable {
                             @NonNull String latitudeKeyName,
                             @NonNull String longitudeKeyName,
                             @NonNull String timeStampKeyName,
+                            @NonNull String locationEntriesKeyName,
                             @Nullable List<Param> locationEntryParams,
                             @NonNull List<DailyOperationHours> dailyOperationHoursList) {
     super(postUrl, queryParamList, headerParamList, requestBodyParamList);
@@ -35,6 +38,7 @@ public class LocationPostConfig extends ApiConfig implements Serializable {
     this.latitudeKeyName = latitudeKeyName;
     this.longitudeKeyName = longitudeKeyName;
     this.timeStampKeyName = timeStampKeyName;
+    this.locationEntriesKeyName = locationEntriesKeyName;
     this.locationEntryParams = locationEntryParams;
     this.dailyOperationHoursList = dailyOperationHoursList;
   }
@@ -75,12 +79,21 @@ public class LocationPostConfig extends ApiConfig implements Serializable {
     this.timeStampKeyName = timeStampKeyName;
   }
 
+  @NonNull
+  public String getLocationEntriesKeyName() {
+    return locationEntriesKeyName;
+  }
+
+  public void setLocationEntriesKeyName(@NonNull String locationEntriesKeyName) {
+    this.locationEntriesKeyName = locationEntriesKeyName;
+  }
+
   @Nullable
   public List<Param> getLocationEntryParams() {
     return locationEntryParams;
   }
 
-  public void setLocationEntryParams(@NonNull List<Param> locationEntryParams) {
+  public void setLocationEntryParams(@Nullable List<Param> locationEntryParams) {
     this.locationEntryParams = locationEntryParams;
   }
 
