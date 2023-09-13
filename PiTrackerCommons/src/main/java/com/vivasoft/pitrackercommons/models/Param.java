@@ -35,16 +35,31 @@ public class Param implements Serializable {
 
   public Param getTypeFixedInstance() {
     switch (paramType.typeId) {
+      case ParamType.INT_32: {
+        if (value instanceof Double) {
+          return new Param(key, ((Double) value).intValue(), paramType);
+        } else if (value instanceof Float) {
+          // uncommon case
+          return new Param(key, ((Float) value).intValue(), paramType);
+        } else {
+          return this;
+        }
+      }
+      case ParamType.INT_64: {
+        if (value instanceof Double) {
+          return new Param(key, ((Double) value).longValue(), paramType);
+        } else if (value instanceof Float) {
+          // uncommon case
+          return new Param(key, ((Float) value).longValue(), paramType);
+        } else {
+          return this;
+        }
+      }
       case ParamType.BOOL:
-        return new Param(key, ((boolean) value), paramType);
-      case ParamType.INT_32:
-        return new Param(key, ((int) value), paramType);
-      case ParamType.INT_64:
-        return new Param(key, ((long) value), paramType);
       case ParamType.DOUBLE:
-        return new Param(key, ((double) value), paramType);
+      case ParamType.STRING:
       default:
-        return new Param(key, value.toString(), paramType);
+        return this;
     }
   }
 
