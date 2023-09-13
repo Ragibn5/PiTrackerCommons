@@ -2,20 +2,44 @@ package com.vivasoft.pitrackercommons.models;
 
 import androidx.annotation.NonNull;
 
+import com.vivasoft.pitrackercommons.exceptions.NotInitializedException;
+import com.vivasoft.pitrackercommons.exceptions.TypeMismatchException;
+
 import java.io.Serializable;
 
 public class Param implements Serializable {
-  @NonNull
-  private final String key;
-  @NonNull
-  private final Object value;
-  @NonNull
-  private final ParamType paramType;
+  private String key;
+  private Object value;
+  private ParamType paramType;
 
-  private Param(@NonNull String key, @NonNull Object value, @NonNull ParamType paramType) {
+  public Param() throws NotInitializedException, TypeMismatchException {
+    tryFixingValueTypeMismatch();
+  }
+
+  private Param(@NonNull String key, @NonNull Object value, @NonNull ParamType paramType) throws NotInitializedException, TypeMismatchException {
     this.key = key;
     this.value = value;
     this.paramType = paramType;
+
+    tryFixingValueTypeMismatch();
+  }
+
+  private void tryFixingValueTypeMismatch() throws NotInitializedException, TypeMismatchException {
+    if (key == null || value == null || paramType == null) {
+      throw new NotInitializedException("Some non-null values are not yet initialized");
+    }
+
+    if ((((paramType.typeId == ParamType.BOOL) && (value instanceof Boolean)) ||
+      ((paramType.typeId == ParamType.INT_32) && (value instanceof Integer)) ||
+      ((paramType.typeId == ParamType.INT_64) && (value instanceof Long)) ||
+      ((paramType.typeId == ParamType.DOUBLE) && (value instanceof Double)) ||
+      ((paramType.typeId == ParamType.STRING) && (value instanceof String)))) {
+      // nothing to do - everything is okay
+    } else if (paramType.typeId == ParamType.DOUBLE && ((value instanceof Integer) || (value instanceof Long))) {
+      value = getTypeFixedValue(value, paramType);
+    } else {
+      throw new TypeMismatchException("The value does not match the specified param type");
+    }
   }
 
   @NonNull
@@ -33,33 +57,35 @@ public class Param implements Serializable {
     return paramType;
   }
 
-  public Param getTypeFixedInstance() {
+  public Object getTypeFixedValue(@NonNull Object value, @NonNull ParamType paramType) {
     switch (paramType.typeId) {
       case ParamType.INT_32: {
         if (value instanceof Double) {
-          return new Param(key, ((Double) value).intValue(), paramType);
+          return ((Double) value).intValue();
         } else if (value instanceof Float) {
           // uncommon case
-          return new Param(key, ((Float) value).intValue(), paramType);
+          return ((Float) value).intValue();
         } else {
-          return this;
+          // uncommon case
+          return this.value;
         }
       }
       case ParamType.INT_64: {
         if (value instanceof Double) {
-          return new Param(key, ((Double) value).longValue(), paramType);
+          return ((Double) value).longValue();
         } else if (value instanceof Float) {
           // uncommon case
-          return new Param(key, ((Float) value).longValue(), paramType);
+          return ((Float) value).longValue();
         } else {
-          return this;
+          // uncommon case
+          return this.value;
         }
       }
       case ParamType.BOOL:
       case ParamType.DOUBLE:
       case ParamType.STRING:
       default:
-        return this;
+        return this.value;
     }
   }
 
