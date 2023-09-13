@@ -34,34 +34,31 @@ public class Param implements Serializable {
   }
 
   public Param getTypeFixedInstance() {
-    switch (paramType) {
-      case TYPE_BOOL:
+    switch (paramType.typeId) {
+      case ParamType.BOOL:
         return new Param(key, ((boolean) value), paramType);
-      case TYPE_INT_32:
+      case ParamType.INT_32:
         return new Param(key, ((int) value), paramType);
-      case TYPE_INT_64:
+      case ParamType.INT_64:
         return new Param(key, ((long) value), paramType);
-      case TYPE_DOUBLE:
+      case ParamType.DOUBLE:
         return new Param(key, ((double) value), paramType);
       default:
         return new Param(key, value.toString(), paramType);
     }
   }
 
-  public enum ParamType {
-    TYPE_BOOL(1),
-    TYPE_INT_32(2),
-    TYPE_INT_64(3),
-    TYPE_DOUBLE(4),
-    TYPE_STRING(5);
-    private final int value;
+  public static class ParamType {
+    public static final int BOOL = 1;
+    public static final int INT_32 = 2;
+    public static final int INT_64 = 3;
+    public static final int DOUBLE = 4;
+    public static final int STRING = 5;
 
-    ParamType(int value) {
-      this.value = value;
-    }
+    private final int typeId;
 
-    public int getValue() {
-      return value;
+    ParamType(int typeId) {
+      this.typeId = typeId;
     }
   }
 }
