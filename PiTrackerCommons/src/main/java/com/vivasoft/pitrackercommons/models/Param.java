@@ -48,7 +48,7 @@ public class Param implements Serializable {
     }
   }
 
-  public static class ParamType {
+  public static class ParamType implements Serializable {
     public static final int BOOL = 1;
     public static final int INT_32 = 2;
     public static final int INT_64 = 3;
