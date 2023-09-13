@@ -2,40 +2,17 @@ package com.vivasoft.pitrackercommons.models;
 
 import androidx.annotation.NonNull;
 
-import com.vivasoft.pitrackercommons.exceptions.NotInitializedException;
-import com.vivasoft.pitrackercommons.exceptions.TypeMismatchException;
-
 import java.io.Serializable;
 
 public class Param implements Serializable {
   private final String key;
-  private Object value;
+  private final Object value;
   private final ParamType paramType;
 
-  private Param(@NonNull String key, @NonNull Object value, @NonNull ParamType paramType) throws NotInitializedException, TypeMismatchException {
+  private Param(@NonNull String key, @NonNull Object value, @NonNull ParamType paramType) {
     this.key = key;
     this.value = value;
     this.paramType = paramType;
-
-    tryFixingValueTypeMismatch();
-  }
-
-  private void tryFixingValueTypeMismatch() throws NotInitializedException, TypeMismatchException {
-    if (key == null || value == null || paramType == null) {
-      throw new NotInitializedException("Some non-null values are not yet initialized");
-    }
-
-    if ((((paramType.typeId == ParamType.BOOL) && (value instanceof Boolean)) ||
-      ((paramType.typeId == ParamType.INT_32) && (value instanceof Integer)) ||
-      ((paramType.typeId == ParamType.INT_64) && (value instanceof Long)) ||
-      ((paramType.typeId == ParamType.DOUBLE) && (value instanceof Double)) ||
-      ((paramType.typeId == ParamType.STRING) && (value instanceof String)))) {
-      // nothing to do - everything is okay
-    } else if (paramType.typeId == ParamType.DOUBLE && ((value instanceof Integer) || (value instanceof Long))) {
-      value = getTypeFixedValue(value, paramType);
-    } else {
-      throw new TypeMismatchException("The value does not match the specified param type");
-    }
   }
 
   @NonNull
@@ -45,7 +22,7 @@ public class Param implements Serializable {
 
   @NonNull
   public Object getValue() {
-    return value;
+    return getTypeFixedValue();
   }
 
   @NonNull
@@ -53,7 +30,7 @@ public class Param implements Serializable {
     return paramType;
   }
 
-  public Object getTypeFixedValue(@NonNull Object value, @NonNull ParamType paramType) {
+  private Object getTypeFixedValue() {
     switch (paramType.typeId) {
       case ParamType.INT_32: {
         if (value instanceof Double) {
