@@ -8,13 +8,9 @@ import com.vivasoft.pitrackercommons.exceptions.TypeMismatchException;
 import java.io.Serializable;
 
 public class Param implements Serializable {
-  private String key;
+  private final String key;
   private Object value;
-  private ParamType paramType;
-
-  public Param() throws NotInitializedException, TypeMismatchException {
-    tryFixingValueTypeMismatch();
-  }
+  private final ParamType paramType;
 
   private Param(@NonNull String key, @NonNull Object value, @NonNull ParamType paramType) throws NotInitializedException, TypeMismatchException {
     this.key = key;
