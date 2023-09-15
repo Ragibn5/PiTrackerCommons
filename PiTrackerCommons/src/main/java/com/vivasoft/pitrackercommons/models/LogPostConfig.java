@@ -16,6 +16,12 @@ public class LogPostConfig extends ApiConfig implements Serializable {
   @NonNull
   private final String timeStampKeyName;
   @NonNull
+  private final String batteryPercentageKeyName;
+  @NonNull
+  private final String gpsStatusKeyName;
+  @NonNull
+  private final String networkStatusKeyName;
+  @NonNull
   private final String logEntriesKeyName;
   @Nullable
   private final List<Param> logEntryParams;
@@ -28,12 +34,18 @@ public class LogPostConfig extends ApiConfig implements Serializable {
                        @NonNull String typeKeyName,
                        @NonNull String descriptionKeyName,
                        @NonNull String timeStampKeyName,
+                       @NonNull String batteryPercentageKeyName,
+                       @NonNull String gpsStatusKeyName,
+                       @NonNull String networkStatusKeyName,
                        @NonNull String logEntriesKeyName,
                        @Nullable List<Param> logEntryParams) {
     super(postUrl, queryParamList, headerParamList, requestBodyParamList);
     this.packageName = packageName;
     this.typeKeyName = typeKeyName;
     this.descriptionKeyName = descriptionKeyName;
+    this.batteryPercentageKeyName = batteryPercentageKeyName;
+    this.gpsStatusKeyName = gpsStatusKeyName;
+    this.networkStatusKeyName = networkStatusKeyName;
     this.timeStampKeyName = timeStampKeyName;
     this.logEntriesKeyName = logEntriesKeyName;
     this.logEntryParams = logEntryParams;
@@ -61,6 +73,21 @@ public class LogPostConfig extends ApiConfig implements Serializable {
   @NonNull
   public String getTimeStampKeyName() {
     return timeStampKeyName;
+  }
+
+  @NonNull
+  public String getBatteryPercentageKeyName() {
+    return batteryPercentageKeyName;
+  }
+
+  @NonNull
+  public String getGpsStatusKeyName() {
+    return gpsStatusKeyName;
+  }
+
+  @NonNull
+  public String getNetworkStatusKeyName() {
+    return networkStatusKeyName;
   }
 
   @NonNull
