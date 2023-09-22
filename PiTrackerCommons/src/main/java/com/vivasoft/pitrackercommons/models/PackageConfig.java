@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 public class PackageConfig implements Serializable {
   @NonNull
-  final String packageName;
+  private String packageName;
   @NonNull
   private final LogPostConfig logPostConfig;
   @NonNull
@@ -21,6 +21,10 @@ public class PackageConfig implements Serializable {
   @NonNull
   public String getPackageName() {
     return packageName;
+  }
+
+  public void setPackageName(@NonNull String packageName) {
+    this.packageName = packageName;
   }
 
   @NonNull
