@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.List;
 
 public class LocationPostConfig extends ApiConfig implements Serializable {
-  private int postIntervalInMinutes;
+  private final int postIntervalInMinutes;
   @NonNull
   private String packageName;
   @NonNull
@@ -44,6 +44,10 @@ public class LocationPostConfig extends ApiConfig implements Serializable {
     this.locationEntriesKeyName = locationEntriesKeyName;
     this.locationEntryParams = locationEntryParams;
     this.dailyOperationHoursList = dailyOperationHoursList;
+  }
+
+  public int getPostIntervalInMinutes() {
+    return postIntervalInMinutes;
   }
 
   @NonNull
